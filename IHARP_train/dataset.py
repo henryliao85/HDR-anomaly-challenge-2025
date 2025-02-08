@@ -21,7 +21,7 @@ def parse_date_from_filename(fn):
     day_float = (dt_ - base).days
     return day_float, dt_
 
-def build_training_arrays_from_files(file_list, device):
+def build_training_arrays_from_files(file_list, label_dir, device):
     """
     Given a list of file paths (from "data/nc3", sorted by time),
     build training arrays.
@@ -52,7 +52,6 @@ def build_training_arrays_from_files(file_list, device):
         t_prev = all_days[i-1]
         day_pairs.append((t_prev, t))
     # Read labels from CSVs.
-    label_dir = "data/label"
     csv_list = [
         "Atlantic_City_1993_2013_training_data.csv",
         "Baltimore_1993_2013_training_data.csv",

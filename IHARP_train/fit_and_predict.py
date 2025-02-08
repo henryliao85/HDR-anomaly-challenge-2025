@@ -10,13 +10,13 @@ from sklearn.metrics import f1_score
 
 from dataset import build_training_arrays_from_files, parse_date_from_filename
 
-def fit_model(model, checkpoint_path, device, data_dir="./data/nc"):
+def fit(model, checkpoint_path, device, data_dir, label_dir):
     """
     Sliding-window training over files from data_dir.
     For each window (of size window_size, sliding by window_step),
     train the model for epochs_per_window epochs using mini-batches.
     """
-    model.to(device)
+    model.model.to(device)
     all_files = sorted([os.path.join(data_dir, f) for f in os.listdir(data_dir) if f.endswith(".nc")],
                        key=lambda fp: parse_date_from_filename(os.path.basename(fp))[0])
     total_files = len(all_files)
@@ -27,7 +27,7 @@ def fit_model(model, checkpoint_path, device, data_dir="./data/nc"):
     # Loop over sliding windows.
     for start in range(0, total_files - window_size + 1, window_step):
         window_files = all_files[start : start + window_size]
-        X_ugvg, X_sla, Y_12 = build_training_arrays_from_files(window_files, device)
+        X_ugvg, X_sla, Y_12 = build_training_arrays_from_files(window_files, label_dir, device)
         N = Y_12.shape[0]
         optimizer = Adam(model.model.parameters(), lr=model.cfg['lr'])
         for epoch in range(epochs_per_window):
@@ -68,7 +68,7 @@ def fit_model(model, checkpoint_path, device, data_dir="./data/nc"):
     # Save the model checkpoint after training
     torch.save(model.model.state_dict(), checkpoint_path)
 
-def predict_on_validation(model, device, data_dir = "./data/nc_validate", csv_path = "test.predictions.csv"):
+def predict(model, device, data_dir, label_dir, csv_path = "test.predictions.csv"):
     """
     Predict on data from './data/nc_validate' (the prediction set).
     For each day t in the prediction set, use day(t-1)'s ugosa/vgosa and day(t)'s SLA.
@@ -103,8 +103,6 @@ def predict_on_validation(model, device, data_dir = "./data/nc_validate", csv_pa
         t = all_days[i]
         t_prev = all_days[i-1]
         day_pairs.append((t_prev, t))
-    # Read labels.
-    label_dir = "./data/label"
     csv_list = [
         "Atlantic_City_1993_2013_training_data.csv",
         "Baltimore_1993_2013_training_data.csv",
