@@ -1,0 +1,8 @@
+num_epochs = 7
+batch_size = 8
+lr_backbone = 1e-5
+lr_classifier = 1e-3
+num_unfrozen_blocks = 2
+num_classes = 15
+feature_dim = 512
+image_size = 256
