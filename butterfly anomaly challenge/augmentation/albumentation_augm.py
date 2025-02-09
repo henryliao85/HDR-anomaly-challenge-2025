@@ -6,7 +6,7 @@ the original and augmented images with generic filenames. A new CSV file is prod
 containing metadata for both real and synthetic images.
 
 Usage:
-    python augment.py --orig_img_folder path/to/original_images \
+    python albumentation_augm.py --orig_img_folder path/to/original_images \
                       --output_img_folder path/to/output_images \
                       --csv_path path/to/input.csv \
                       --output_csv_path path/to/output.csv \
