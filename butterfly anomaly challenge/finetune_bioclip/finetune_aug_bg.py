@@ -4,7 +4,7 @@ This script fine-tunes a BiO-CLIP model on a dataset with a U-Net based backgrou
 It loads data, extracts features, trains a classification head, and saves the resulting models.
 
 Usage:
-    python train.py --data_file path/to/data.csv --img_dir path/to/images --clf_save_dir path/to/save_dir [other options...]
+    python finetune_aug_bg.py --data_file path/to/data.csv --img_dir path/to/images --clf_save_dir path/to/save_dir [other options...]
 
 Adjust the arguments as needed.
 """
