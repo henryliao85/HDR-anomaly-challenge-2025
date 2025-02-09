@@ -17,7 +17,7 @@ Butterfly subspecies classification is challenging due to subtle variations in w
 
 ### Downloading the Data
 
-The dataset consists of high-resolution butterfly images along with a CSV metadata file containing subspecies labels and additional attributes. Images are downloaded from a public repository and organized into folders by class.
+The dataset consists of high-resolution butterfly images along with a CSV metadata file containing subspecies labels and additional attributes.
 
 ### Preprocessing
 
@@ -130,10 +130,11 @@ git clone https://github.com/henryliao85/HDR-anomaly-challenge-2025.git
 cd HDR-anomaly-challenge-2025/butterfly\ anomaly\ challenge
 ```
 # Download the images:
-Use the notebook download_data.ipynb.
+Use the notebook [`download_data.ipynb`](download_data.ipynb) to download the images and the csv file.
 
 # Download the trained model weigts:
-Use the notebook download_model_weights.ipynb. In particularly we need the pretraine Unet model (or alternatively one can use the SAM plus YOLO method from the remove_bg/segmentation_scripts and train a Unet using train_unet256.py).
+Use the notebook [`download_model_weights.ipynb`](download_model_weights.ipynb). In particular, we need the pretrained U-Net model. Alternatively, one can use the SAM plus YOLO method from [`remove_bg/segmentation_scripts`](remove_bg/segmentation_scripts) and train a U-Net using [`train_unet256.py`](train_unet256.py).
+
 
 
 
