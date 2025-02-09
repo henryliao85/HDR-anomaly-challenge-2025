@@ -104,16 +104,24 @@ The repository is organized as follows:
 
 HDR-anomaly-challenge-2025/
 └── butterfly anomaly challenge/
-    ├── unet_train.py           # Training script for the U-Net wing segmentation model
-    ├── data_augmentation.py    # Data augmentation scripts for balancing the dataset
-    ├── classifier_train.py     # Fine-tuning script for BiO-CLIP and classifier head training
-    ├── dataset.py              # Dataset handling and preprocessing code
-    ├── hybrid_prob.py          # Hybrid probability estimation function
-    ├── requirements.txt        # List of required packages
-    └── summary.md              # This summary document
-Reproducing the Results
-To reproduce the results presented in this work, follow these steps:
+    ├── augmentation/
+    │   ├── albumentation_augm.py    # Script for data augmentation using Albumentations
+    │   └── augment.py               # General data augmentation script
+    ├── finetune_bioclip/
+    │   ├── data_utils.py            # Utility functions for data handling
+    │   ├── dataset.py               # Dataset handling and preprocessing code
+    │   └── finetune_aug_bg.py       # Fine-tuning script for BiO-CLIP with augmented background
+    ├── remove_bg/                   # Directory for background removal scripts
+    │   ├──segmentation_scripts/
+    │   ├── select_wings_unet.py     # Script for selecting wings using U-Net
+    │   └── train_unet256.py         # Training script for U-Net with 256x256 resolution
+    ├── download_data.ipynb          # Notebook for downloading dataset
+    ├── download_model_weights.ipynb # Notebook for downloading model weights
+    └── summary.md                   # Summary document for the project
 ```
+## Reproducing the Results
+To reproduce the results presented in this work, follow these steps:
+
 Clone the Repository:
 
 ```bash
