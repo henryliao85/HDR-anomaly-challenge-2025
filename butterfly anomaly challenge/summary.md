@@ -23,9 +23,8 @@ The dataset consists of high-resolution butterfly images along with a CSV metada
 
 The preprocessing step involves:
 - Resizing images to a fixed resolution (e.g., 256×256 pixels),
-- Organizing data according to the metadata,
-- Ensuring each butterfly subspecies is sufficiently represented.
-
+- Preparing the metadata file,
+  
 ## Wing Segmentation Using U-Net
 
 ### Model Architecture and Training
@@ -92,7 +91,7 @@ def get_hybrid_prob(self, probs):
       (1.0 minus the difference between the top two probabilities).
     """
     cl_probs = np.sort(probs[:, :-1], axis=1)[:, ::-1]
-    last_cl = probs[:, -1]
+    last_cl = probs[:, -1] #this is the hybrid class
     hybrid_probs = np.maximum(last_cl, 1.0 - (cl_probs[:, 0] - cl_probs[:, 1]))
     return hybrid_probs[0]
 ```
@@ -117,6 +116,7 @@ HDR-anomaly-challenge-2025/
     │   └── train_unet256.py         # Training script for U-Net with 256x256 resolution
     ├── download_data.ipynb          # Notebook for downloading dataset
     ├── download_model_weights.ipynb # Notebook for downloading model weights
+    ├── model.py                     # Classifier model submitted to the final challenge
     └── summary.md                   # Summary document for the project
 ```
 ## Reproducing the Results
