@@ -167,10 +167,10 @@ python finetune_aug_bg.py --data_file path/to/data.csv --img_dir path/to/images 
 
 ```
 # Training hyperparameter:
-See training_hyperparams.txt for the parameters used for training the model.
+See [`training_hyperparams.txt`](training_hyperparams.txt) for the parameters used for training the model.
 
 # Hybrid Probability Estimation:
-The hybrid probability function is integrated within the classifier code to compute a scalar probability for hybrid cases. Refer to model.py for details.
+The hybrid probability function is integrated within the classifier code to compute a scalar probability for hybrid cases. Refer to [`model.py`](model.py) for details.
 
 
 
