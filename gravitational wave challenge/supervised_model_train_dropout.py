@@ -89,6 +89,7 @@ def train_classification(
 
     for i, dataset_name in enumerate(datasets):
         data = normalize_data(load_train_data(dataset_name))
+        data = data if i==0 else data[:int(len(data)/2)]
         
         # Use first dataset as background (label=0), others as signal (label=1)
         label = 0 if i == 0 else 1
@@ -147,7 +148,7 @@ def main():
     in_dim = 100*2
     model = SimpleBinaryClassifier(in_dim, hidden_dim=128).to(device)
     
-    # example datasets
+    # example datasets (First one should be background related data the others should be datas with signal)
     datasets = ("background_train.npz", "bbh_for_challenge_train.npy", "sglf_for_challenge_train.npy")
     
     train_classification(
