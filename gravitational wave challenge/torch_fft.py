@@ -2,21 +2,6 @@ import torch
 #import matplotlib.pyplot as plt
 
 def torch_fft(signal, plot_info=None):
-    """
-    signal: PyTorch Tensor
-      - shape = (N,)   => 單條訊號 (可繪圖)
-      - shape = (M,N)  => 多條訊號, each length N (不會繪圖)
-    plot_info: dict or None
-      - 若 signal=(N,) & 'data type' in plot_info => 繪圖
-      - 否則只回傳 amp_half
-
-    回傳:
-      amp_half: 
-        - 若 signal=(N,), 形狀=(N/2,)
-        - 若 signal=(M,N), 形狀=(M, N/2)
-      內容: log(振幅+1) (0~N/2)
-    """
-
     # 若 plot_info=None, 先設成空dict
     if plot_info is None:
         plot_info = {}
@@ -81,27 +66,27 @@ def torch_fft(signal, plot_info=None):
     # 振幅 => amp_half shape=(N/2,)
     amp_np = amp_half.detach().cpu().numpy()
 
-    # 繪圖
-    # plt.figure(figsize=(10,4))
-    # plt.suptitle(data_type)
-    # # (a) 時域
-    # plt.subplot(1,2,1)
-    # plt.plot(t_np, time_signal_np, label="signal")
-    # plt.xlabel("Time (sec)")
-    # plt.ylabel("Amplitude")
-    # plt.title("Time domain")
-    # plt.grid(True)
+    繪圖
+    plt.figure(figsize=(10,4))
+    plt.suptitle(data_type)
+    # (a) 時域
+    plt.subplot(1,2,1)
+    plt.plot(t_np, time_signal_np, label="signal")
+    plt.xlabel("Time (sec)")
+    plt.ylabel("Amplitude")
+    plt.title("Time domain")
+    plt.grid(True)
 
-    # # (b) 頻域
-    # plt.subplot(1,2,2)
-    # plt.plot(freq_half_np, amp_np, label="Amplitude Spectrum")
-    # plt.xlim(0, fs/2)
-    # plt.xlabel("Frequency (Hz)")
-    # plt.ylabel("log(Amplitude+1)")
-    # plt.title("Frequency domain")
-    # plt.grid(True)
+    # (b) 頻域
+    plt.subplot(1,2,2)
+    plt.plot(freq_half_np, amp_np, label="Amplitude Spectrum")
+    plt.xlim(0, fs/2)
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("log(Amplitude+1)")
+    plt.title("Frequency domain")
+    plt.grid(True)
 
-    # plt.tight_layout()
-    # plt.show()
+    plt.tight_layout()
+    plt.show()
 
-    # return amp_half
+    return amp_half
