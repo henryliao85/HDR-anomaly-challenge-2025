@@ -141,7 +141,7 @@ Use the notebook [`download_model_weights.ipynb`](download_model_weights.ipynb).
 # Use the pretrained U-Net Model:
 Run the U-Net to select the wings:
 
-```
+
 ```bash
 
 python remove_background.py --model_path path/to/pretrained_unet_model.pth \
