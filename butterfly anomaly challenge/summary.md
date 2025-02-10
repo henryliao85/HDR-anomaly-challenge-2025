@@ -133,7 +133,7 @@ cd HDR-anomaly-challenge-2025/butterfly\ anomaly\ challenge
 Use the notebook [`download_data.ipynb`](download_data.ipynb) to download the images and the csv file.
 
 # Download the trained model weigts:
-Use the notebook [`download_model_weights.ipynb`](download_model_weights.ipynb). In particular, we need the pretrained U-Net model. Alternatively, one can use the SAM plus YOLO method from [`remove_bg/segmentation_scripts`](remove_bg/segmentation_scripts) and train a U-Net using [`train_unet256.py`](train_unet256.py).
+Use the notebook [`download_model_weights.ipynb`](download_model_weights.ipynb). The model weights are on the  [Huggingface repo]([https://github.com/Imageomics/wing-segmentation](https://huggingface.co/pn74870/2025-NSF-HDR-Hackaton-Butterfly-Hybrid-Detection)). In particular, we need the pretrained U-Net model. Alternatively, one can use the SAM plus YOLO method from [`remove_bg/segmentation_scripts`](remove_bg/segmentation_scripts) and train a U-Net using [`train_unet256.py`](train_unet256.py).
 
 
 
