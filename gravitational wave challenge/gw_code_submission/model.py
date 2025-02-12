@@ -1,7 +1,5 @@
-
-
 import torch
-from supervised_model_train import SimpleBinaryClassifier
+from binary_classifier import SimpleBinaryClassifier
 import os
 
 class Model:
@@ -29,5 +27,6 @@ class Model:
             errors0.append(pred.cpu().item())
         return errors0
 
-    def load(self):
-        self.clf.load_state_dict(torch.load(os.path.join(os.path.dirname(__file__), 'supervied_model_fft_N_v3-4.pth'), map_location=self.device))
+    def load(self, model_name):
+        self.clf.load_state_dict(torch.load(os.path.join(os.path.dirname(__file__), model_name), map_location=self.device))
+

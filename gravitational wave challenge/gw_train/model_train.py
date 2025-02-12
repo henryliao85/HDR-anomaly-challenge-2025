@@ -71,8 +71,7 @@ def train_classification(
     """
     model.to(device)
     
-    model_dir = "/home/string-3/Documents/Hackathon/Models/SL_fft/"
-    model_path = model_dir + f"{save_name}.pth"
+    model_path = f"{save_name}.pth"
 
     existed = False
     if os.path.exists(model_path):
@@ -137,7 +136,7 @@ def train_classification(
 
     # ---- Save model ----
     model_name = f"{save_name}.pth" if not existed else "retain_model_name.pth"
-    torch.save(model.state_dict(), model_dir + model_name)
+    torch.save(model.state_dict(), model_name)
     print(f"Model saved to {model_name}")
     
     return epoch_losses

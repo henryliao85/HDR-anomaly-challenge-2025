@@ -1,7 +1,22 @@
 import torch
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 def torch_fft(signal, plot_info=None):
+    """
+    signal: PyTorch Tensor
+      - shape = (N,)   => 單條訊號 (可繪圖)
+      - shape = (M,N)  => 多條訊號, each length N (不會繪圖)
+    plot_info: dict or None
+      - 若 signal=(N,) & 'data type' in plot_info => 繪圖
+      - 否則只回傳 amp_half
+
+    回傳:
+      amp_half: 
+        - 若 signal=(N,), 形狀=(N/2,)
+        - 若 signal=(M,N), 形狀=(M, N/2)
+      內容: log(振幅+1) (0~N/2)
+    """
+
     # 若 plot_info=None, 先設成空dict
     if plot_info is None:
         plot_info = {}
@@ -22,8 +37,8 @@ def torch_fft(signal, plot_info=None):
     N = signal.shape[-1]
     fs = 4096  # 假定採樣率
 
-    # stds = torch.std(signal)
-    # signal = signal/stds
+    stds = torch.std(signal)
+    signal = signal/stds
     # 執行 torch.fft
     X = torch.fft.fft(signal, dim=-1)  # shape=(M,N), complex
 
@@ -66,7 +81,7 @@ def torch_fft(signal, plot_info=None):
     # 振幅 => amp_half shape=(N/2,)
     amp_np = amp_half.detach().cpu().numpy()
 
-    繪圖
+    # 繪圖
     plt.figure(figsize=(10,4))
     plt.suptitle(data_type)
     # (a) 時域
