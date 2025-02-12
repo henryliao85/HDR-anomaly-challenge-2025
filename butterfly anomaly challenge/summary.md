@@ -41,7 +41,7 @@ Once trained, the U-Net model is used to extract the wing regions from butterfly
 
 ## Data Augmentation for Dataset Balancing
 
-After segmentation, the wing images are augmented to ensure each subspecies class contains at least 1,000 images (see [`training_data.ipynb`](training_data.ipynb)). This is to fix the large imbalance in the dataset for training a network to identify the subspecies of the butterfly. Augmentation techniques include:
+After segmentation, the wing images are augmented to ensure each subspecies class contains at least 1,000 images (see [`training_data.ipynb`](training_data.ipynb)). This is to fix the large imbalance in the dataset in terms of different subspecies (since we train a network to identify the subspecies rather than do binary classification). Augmentation techniques include:
 - Random rotations, flips, and affine transformations,
 - Color jittering and brightness/contrast adjustments.
 
