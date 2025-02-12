@@ -12,13 +12,18 @@ We provide, in the suggested form, the codes for models submitted in final phase
 HDR-anomaly-challenge-2025
 ├─butterfly anomaly challenge
 │  ├─augmentation
-│  ├─finetune_bioclip
+│  ├─notebooks
 │  ├─remove_bg
 │  │  └─segmentation_scripts
-│  └─submission
+│  ├─submission
+│  └─training
 ├─gravitational wave challenge
-│  ├─Datasets
-│  └─submission
+│  ├─gw_code_submission
+│  │  └─__pycache__
+│  ├─gw_train
+│  │  ├─Datasets
+│  │  └─__pycache__
+│  └─notebook
 └─sea level rise anomaly challenge
     ├─IHARP_code_submission
     ├─IHARP_train
