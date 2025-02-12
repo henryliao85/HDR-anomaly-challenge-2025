@@ -8,6 +8,7 @@ We provide, in the suggested form, the codes for models submitted in final phase
 
 # Structure of this Repository
 
+```
 HDR-anomaly-challenge-2025
 ├─butterfly anomaly challenge
 │  ├─augmentation
@@ -26,3 +27,4 @@ HDR-anomaly-challenge-2025
     │      ├─nc
     │      └─nc_predict
     └─notebook
+```
