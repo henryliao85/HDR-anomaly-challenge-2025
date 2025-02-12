@@ -11,7 +11,7 @@ This document describes an end-to-end pipeline for butterfly subspecies classifi
 
 ## Introduction
 
-Butterfly subspecies classification is challenging due to subtle variations in wing patterns and colors. Vision transformers are known to be capable of performing such tasks, but they require careful data preprocessing to focus on the relevant wing patterns rather than background object features. In this work, we propose a full pipeline that leverages segmentation, data augmentation, and modern fine-tuning techniques to build a robust classifier. The key aspects of the pipeline are 1) training visual transformer network to correcetly indentify the subspecies of the butterfly instead of doingf a binary classification 2) the estimation of a hybrid probability computed by comparing the top two class probabilities.
+Butterfly subspecies classification is challenging due to subtle variations in wing patterns and colors. Vision transformers are known to be capable of performing such tasks, but they require careful data preprocessing to focus on the relevant wing patterns rather than background object features. In this work, we propose a full pipeline that leverages segmentation, data augmentation, and modern fine-tuning techniques to build a robust classifier. The key aspects of the pipeline are 1) training visual transformer network to identify the subspecies of the butterfly instead of doing a binary classification 2) the estimation of a hybrid probability computed by comparing the top two class probabilities.
 
 ## Data Acquisition and Preprocessing
 
