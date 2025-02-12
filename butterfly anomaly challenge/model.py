@@ -145,7 +145,7 @@ class Model:
 
         # 4. Load your trained U-Net for wings (binary seg)
         self.unet_model = UNet256(in_channels=3, out_channels=1).to(self.device)
-        unet_ckpt = os.path.join(os.path.dirname(__file__), f"best_model.pth")
+        unet_ckpt = os.path.join(os.path.dirname(__file__), f"best_unet_model.pth")
         self.unet_model.load_state_dict(torch.load(unet_ckpt, map_location=self.device))
         self.unet_model.eval()
 
