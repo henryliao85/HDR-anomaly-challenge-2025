@@ -41,7 +41,7 @@ Once trained, the U-Net model is used to extract the wing regions from butterfly
 
 ## Data Augmentation for Dataset Balancing
 
-After segmentation, the wing images are augmented to ensure each subspecies class contains at least 1,000 images (see [`training_data.ipynb`](training_data.ipynb)). This is to fix the large imbalance in the dataset in terms of different subspecies (since we train a network to identify the subspecies rather than do binary classification). Augmentation techniques include:
+After segmentation, the wing images are augmented to ensure each subspecies class contains at least 1,000 images (see [`training_data.ipynb`](notebooks/training_data.ipynb)). This is to fix the large imbalance in the dataset in terms of different subspecies (since we train a network to identify the subspecies rather than do binary classification). Augmentation techniques include:
 - Random rotations, flips, and affine transformations,
 - Color jittering and brightness/contrast adjustments.
 
@@ -136,10 +136,10 @@ git clone https://github.com/henryliao85/HDR-anomaly-challenge-2025.git
 cd HDR-anomaly-challenge-2025/butterfly\ anomaly\ challenge
 ```
 # Download the images:
-Use the notebook [`download_data.ipynb`](download_data.ipynb) to download the images and the csv file.
+Use the notebook [`download_data.ipynb`](notebooks/download_data.ipynb) to download the images and the csv file.
 
 # Download the trained model weigts:
-Use the notebook [`download_model_weights.ipynb`](download_model_weights.ipynb). The model weights are on this  [Huggingface repo](https://huggingface.co/pn74870/2025-NSF-HDR-Hackaton-Butterfly-Hybrid-Detection). In particular, we need the pretrained U-Net model. Alternatively, one can use the SAM plus YOLO method from [`remove_bg/segmentation_scripts`](remove_bg/segmentation_scripts) and train a U-Net using [`train_unet256.py`](train_unet256.py).
+Use the notebook [`download_model_weights.ipynb`](notebooks/download_model_weights.ipynb). The model weights are on this  [Huggingface repo](https://huggingface.co/pn74870/2025-NSF-HDR-Hackaton-Butterfly-Hybrid-Detection). In particular, we need the pretrained U-Net model. Alternatively, one can use the SAM plus YOLO method from [`remove_bg/segmentation_scripts`](remove_bg/segmentation_scripts) and train a U-Net using [`train_unet256.py`](remove_bg/train_unet256.py).
 
 
 
@@ -181,7 +181,7 @@ The hybrid probability function is integrated within the classifier code to comp
 
 ## Submission files
 
-Use the notebook [`download_model_weights.ipynb`](download_model_weights.ipynb) to download the weights of the model in the submission folder. The model weights are on this  [Huggingface repo](https://huggingface.co/pn74870/2025-NSF-HDR-Hackaton-Butterfly-Hybrid-Detection).
+Use the notebook [`download_model_weights.ipynb`](submission/download_model_weights.ipynb) to download the weights of the model in the submission folder. The model weights are on this  [Huggingface repo](https://huggingface.co/pn74870/2025-NSF-HDR-Hackaton-Butterfly-Hybrid-Detection).
 
 ## References
 Imageomics Wing Segmentation:
