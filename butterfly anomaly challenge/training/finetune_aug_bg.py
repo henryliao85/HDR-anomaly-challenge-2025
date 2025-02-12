@@ -29,7 +29,6 @@ from open_clip import create_model
 # Import local modules
 from data_utils import load_data
 from dataset import ButterflyDatasetClass14
-from train_unet256 import UNet256
 
 
 # --------------------------
@@ -152,11 +151,6 @@ def main(args):
     image_transform, clip_transform = get_transforms(args.image_size)
     augment_prob, augmentation_transforms = get_augmentation_pipeline(args.augment_prob)
 
-    # Setup U-Net for background removal
-    unet_bg = UNet256(in_channels=3, out_channels=1).to(device)
-    unet_bg.load_state_dict(torch.load(args.unet_ckpt, map_location=device), strict=False)
-    unet_bg.eval()
-
     # Create and load the BiO-CLIP model and data
     model, train_data, valid_data = setup_data_and_model(args.data_file, args.img_dir, device)
     train_loader, val_loader = prepare_data_loaders(train_data, valid_data, args.img_dir, image_transform, args.batch_size)
@@ -269,8 +263,15 @@ def main(args):
         print(f"           Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.4f}")
 
     # Save the trained models with generic filenames to avoid leaking info
-    clf_save_path = Path(args.clf_save_dir) / "cl_head.pth"
-    model_save_path = Path(args.clf_save_dir) / "model.pth"
+    # Ensure the directory exists
+    save_dir = Path(args.clf_save_dir)
+    save_dir.mkdir(parents=True, exist_ok=True)
+
+    # Define file paths
+    clf_save_path = save_dir / "cl_head.pth"
+    model_save_path = save_dir / "ft_model.pth"
+
+    # Save model state dictionaries
     torch.save(classifier_head.state_dict(), clf_save_path)
     torch.save(model.state_dict(), model_save_path)
 
@@ -288,7 +289,6 @@ if __name__ == '__main__':
     # Optional model paths for loading weights
     parser.add_argument("--ft_path", type=str, default="", help="Path to fine-tuned BiO-CLIP weights.")
     parser.add_argument("--cl_head_path", type=str, default="", help="Path to the classification head weights.")
-    parser.add_argument("--unet_ckpt", type=str, required=True, help="Path to the U-Net checkpoint.")
     
     # Training hyperparameters
     parser.add_argument("--num_epochs", type=int, default=5, help="Number of training epochs.")
