@@ -19,10 +19,8 @@ HDR-anomaly-challenge-2025
 │  └─training
 ├─gravitational wave challenge
 │  ├─gw_code_submission
-│  │  └─__pycache__
 │  ├─gw_train
-│  │  ├─Datasets
-│  │  └─__pycache__
+│  │  └─Datasets
 │  └─notebook
 └─sea level rise anomaly challenge
     ├─IHARP_code_submission
