@@ -106,7 +106,7 @@ HDR-anomaly-challenge-2025/
     ├── augmentation/
     │   ├── albumentation_augm.py    # Script for data augmentation using Albumentations
     │   └── augment.py               # General data augmentation script
-    ├── finetune_bioclip/
+    ├── training/
     │   ├── data_utils.py            # Utility functions for data handling
     │   ├── dataset.py               # Dataset handling and preprocessing code
     │   └── finetune_aug_bg.py       # Fine-tuning script for BiO-CLIP with augmented, background removed images
@@ -118,10 +118,12 @@ HDR-anomaly-challenge-2025/
     │   ├── download_model_weights.ipynb   # Notebook for downloading the model weights
     │   ├── requirements.txt               # Requirements for the final submission model
     │   └── model.py                       # Full model submitted to the final challenge
-    ├── download_data.ipynb          # Notebook for downloading dataset
-    ├── download_model_weights.ipynb # Notebook for downloading model weights
+    ├── notebooks/                         # jupyter ipynb files for downloading data, models and running the full pipeline
+    │   ├── download_data.ipynb            # Notebook for downloading dataset
+    │   ├── download_model_weights.ipynb   # Notebook for downloading the model weights
+    │   ├── full_pipeline.ipynb.txt        # Full pipeline for training the model
+    │   └── training_data.ipynb            # Notebook showing the subspiecies distribution of the augmented data used for training 
     ├── model.py                     # Classifier model submitted to the final challenge
-    ├── training_data.ipynb          # Notebook showing the subspiecies distribution of the augmented data used for training 
     ├── training_hyperparams.txt     # The values of the hyperparameters used for training
     └── summary.md                   # Summary document for the project
 ```
