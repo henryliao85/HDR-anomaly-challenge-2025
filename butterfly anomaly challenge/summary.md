@@ -117,7 +117,7 @@ HDR-anomaly-challenge-2025/
     ├── download_data.ipynb          # Notebook for downloading dataset
     ├── download_model_weights.ipynb # Notebook for downloading model weights
     ├── model.py                     # Classifier model submitted to the final challenge
-    ├── training_data.ipynb          # Notebook showing the subpsiecies distribution of the augmented data used for training 
+    ├── training_data.ipynb          # Notebook showing the subspiecies distribution of the augmented data used for training 
     ├── training_hyperparams.txt     # The values of the hyperparameters used for training
     └── summary.md                   # Summary document for the project
 ```
