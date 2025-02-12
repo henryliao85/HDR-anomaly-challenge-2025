@@ -114,6 +114,10 @@ HDR-anomaly-challenge-2025/
     │   ├──segmentation_scripts/
     │   ├── select_wings_unet.py     # Script for selecting wings using U-Net
     │   └── train_unet256.py         # Training script for U-Net with 256x256 resolution
+    ├── submission/                  # Files submitted to the final phase of the challenge
+    │   ├── download_model_weights.ipynb   # Notebook for downloading the model weights
+    │   ├── requirements.txt               # Requirements for the final submission model
+    │   └── model.py                       # Full model submitted to the final challenge
     ├── download_data.ipynb          # Notebook for downloading dataset
     ├── download_model_weights.ipynb # Notebook for downloading model weights
     ├── model.py                     # Classifier model submitted to the final challenge
@@ -175,7 +179,9 @@ See [`training_hyperparams.txt`](training_hyperparams.txt) for the parameters us
 # Hybrid Probability Estimation:
 The hybrid probability function is integrated within the classifier code to compute a scalar probability for hybrid cases. Refer to [`model.py`](model.py) for details.
 
+##Submission files
 
+Use the notebook [`download_model_weights.ipynb`](download_model_weights.ipynb) to download the weights of the model in the submission folder. The model weights are on this  [Huggingface repo](https://huggingface.co/pn74870/2025-NSF-HDR-Hackaton-Butterfly-Hybrid-Detection).
 
 ## References
 Imageomics Wing Segmentation:
