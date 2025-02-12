@@ -97,9 +97,7 @@ def main(args):
     for _, row in df_orig.iterrows():
         cls = row['class']
         filename = row['filename']
-        # Force a .png extension regardless of original CSV content.
-        png_filename = os.path.splitext(filename)[0] + ".png"
-        file_path = os.path.join(args.orig_img_folder, png_filename)
+        file_path = os.path.join(args.orig_img_folder, filename)
         if not os.path.isfile(file_path):
             print(f"Warning: File {file_path} not found.")
             continue
