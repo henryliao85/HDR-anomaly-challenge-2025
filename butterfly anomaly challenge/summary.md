@@ -11,7 +11,7 @@ This document describes an end-to-end pipeline for butterfly subspecies classifi
 
 ## Introduction
 
-Butterfly subspecies classification is challenging due to subtle variations in wing patterns and colors. Vision transformers are known to be capable of performing such tasks, but they require careful data preprocessing to focus on the relevant wing patterns rather than background object features. In this work, we propose a full pipeline that leverages segmentation, data augmentation, and modern fine-tuning techniques to build a robust classifier. A key aspect of the pipeline is the estimation of a hybrid probability computed by comparing the top two class probabilities.
+Butterfly subspecies classification is challenging due to subtle variations in wing patterns and colors. Vision transformers are known to be capable of performing such tasks, but they require careful data preprocessing to focus on the relevant wing patterns rather than background object features. In this work, we propose a full pipeline that leverages segmentation, data augmentation, and modern fine-tuning techniques to build a robust classifier. The key aspects of the pipeline are 1) training visual transformer network to correcetly indentify the subspecies of the butterfly instead of doingf a binary classification 2) the estimation of a hybrid probability computed by comparing the top two class probabilities.
 
 ## Data Acquisition and Preprocessing
 
@@ -41,7 +41,7 @@ Once trained, the U-Net model is used to extract the wing regions from butterfly
 
 ## Data Augmentation for Dataset Balancing
 
-After segmentation, the wing images are augmented to ensure each subspecies class contains at least 1,000 images (see [`training_data.ipynb`](training_data.ipynb)). Augmentation techniques include:
+After segmentation, the wing images are augmented to ensure each subspecies class contains at least 1,000 images (see [`training_data.ipynb`](training_data.ipynb)). This is to fix the large imbalance in the dataset for training a network to identify the subspecies of the butterfly. Augmentation techniques include:
 - Random rotations, flips, and affine transformations,
 - Color jittering and brightness/contrast adjustments.
 
